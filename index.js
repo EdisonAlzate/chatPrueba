@@ -6,6 +6,7 @@ import cors from 'cors'
 import mongoose from "mongoose"
 import bodyParser from "body-parser"
 import router from "./routes/message.js"
+import { Socket } from "socket.io-client"
 
 //Config Mongoose
 
@@ -14,12 +15,12 @@ var urlToConnectionMongo='mongodb+srv://edisonalzate11:FSAem7DyXBauLWNR@cluster0
 mongoose.Promise=global.Promise
 
 const app=express()
-const PORT=5002
+const PORT=4000
 
 // WE WILL CREATE A SERVER WITH  HTTP
 const server =http.createServer(app)
 const io =new Socketserver(server,{
-    core:{
+    cors:{
         origin:'*'
     }
 })
@@ -31,6 +32,11 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 app.use('/api',router)
 
+io.on('connection',(socket)=>{
+    console.log("socket.id",socket.id)
+    console.log("client connected")
+})
+
 
 // Connect to DataBase
 mongoose.connect(urlToConnectionMongo,{useNewUrlParser:true}).then(()=>{
@@ -40,21 +46,3 @@ mongoose.connect(urlToConnectionMongo,{useNewUrlParser:true}).then(()=>{
     })
 })
 
-// mongoose.connect(urlToConnectionMongo,{useNewUrlParser:true})
-// .then(()=>{
-//     console.log('Data Base conneted succesfully')    
-// }).catch(err=>{
-//     console.log(err)
-// })
-
-// const connectDB=async()=>{
-//     try{
-//        await  mongoose.connect(urlToConnectionMongo,{useNewUrlParser:true})    
-             
-//       }catch(error){
-//         console.log(error)
-//         // process.exit()
-//     }
-// }
-
-// await connectDB()

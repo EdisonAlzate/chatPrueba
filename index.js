@@ -14,7 +14,7 @@ var urlToConnectionMongo='mongodb+srv://edisonalzate11:FSAem7DyXBauLWNR@cluster0
 mongoose.Promise=global.Promise
 
 const app=express()
-const PORT=4000
+const PORT=5002
 
 // WE WILL CREATE A SERVER WITH  HTTP
 const server =http.createServer(app)
@@ -39,6 +39,13 @@ mongoose.connect(urlToConnectionMongo,{useNewUrlParser:true}).then(()=>{
         console.log('Server runing in http://localhost:',PORT)
     })
 })
+
+// mongoose.connect(urlToConnectionMongo,{useNewUrlParser:true})
+// .then(()=>{
+//     console.log('Data Base conneted succesfully')    
+// }).catch(err=>{
+//     console.log(err)
+// })
 
 // const connectDB=async()=>{
 //     try{

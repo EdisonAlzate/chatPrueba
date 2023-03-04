@@ -76,7 +76,7 @@ function App() {
             <form onSubmit={nicknameSubmit}>
               <div className="d-flex mb-3">
                 <input type="text" className='form-control' id="nickname" placeholder="Nickname..." onChange={e => setNickname(e.target.value)} value={nickname} required />
-                <button className="btn btn-success mx-3" type="submit" id="btn-nickname" >Add</button>
+                <button className="btn btn-secondary mx-3" type="submit" id="btn-nickname" >Add</button>
               </div>
             </form>
 
@@ -84,7 +84,7 @@ function App() {
             <form onSubmit={submitHandler}>
               <div className="d-flex">
                 <input type="text" className='form-control' placeholder='Message...' id="message" onChange={e => setMessage(e.target.value)} value={message} />
-                <button className="btn btn-success mx-3" type="submit" id="btn-message">Send</button>
+                <button className="btn btn-primary mx-3" type="submit" id="btn-message">Send</button>
               </div>
             </form>
           </div>
